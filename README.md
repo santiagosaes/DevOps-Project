@@ -1,5 +1,5 @@
 # Devops-project
 
 
-![Logo devops](https://github.com/santiagosaes/DevOps-Project/IMAGES/DEVOPSLOGO.png)
+![Logo devops](/IMAGES/DEVOPSLOGO.png)
 My practices about Devops
