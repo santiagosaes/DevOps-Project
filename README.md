@@ -1,6 +1,5 @@
 # Devops-projects
-## This is my repository 
-
+## This is my repository with different DevOps implementation with important tools
 
 ![Logo devops](/IMAGES/DEVOPSLOGO.png)
 
