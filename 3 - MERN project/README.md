@@ -27,6 +27,6 @@ the ones you are not working with at the moment to save available free hours.
 Hint #1: When you create your EC2 Instances, you can add Tag "Name" to it with a value that corresponds to a current project you 
 are working on – it will be reflected in the name of the EC2 Instance. Like this: E03-MERN
 
-![Logo MERN](3 - MERN project/images/AWS_EC2_MERN.png)   
+![ec2](https://github.com/santiagosaes/DevOps-Project/blob/main/3%20-%20MERN%20project/images/AWS_EC2_MERN.png) 
 
 
