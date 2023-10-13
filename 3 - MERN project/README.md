@@ -1,6 +1,7 @@
 # Project MERN
 
-![MERN stack](https://github.com/santiagosaes/DevOps-Project/blob/main/04 - MERN project/images/mernstack.png)
+![MERN stack](https://github.com/santiagosaes/DevOps-Project/blob/main/3%20-%20MERN%20project/images/mernstack.png)
+
 
 ## In this project, you are tasked to implement a web solution based on MERN stack in AWS Cloud.
 
