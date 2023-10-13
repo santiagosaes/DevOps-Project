@@ -1,7 +1,7 @@
 # Project MERN
 
 
-![Logo MERN](/images/mernstack.png)
+![Logo MERN](3 - MERN project/images/mernstack.png)
 
 ## In this project, you are tasked to implement a web solution based on MERN stack in AWS Cloud.
 
@@ -27,6 +27,6 @@ the ones you are not working with at the moment to save available free hours.
 Hint #1: When you create your EC2 Instances, you can add Tag "Name" to it with a value that corresponds to a current project you 
 are working on – it will be reflected in the name of the EC2 Instance. Like this: E03-MERN
 
-![Logo MERN](/images/AWS_EC2_MERN.png)
+![Logo MERN](3 - MERN project/images/AWS_EC2_MERN.png)   
 
 
