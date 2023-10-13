@@ -9,7 +9,7 @@
 4. Create a MongoDB database that communicates with this To-Do application and stores to-do list.
 5. Get familiar with RESTful API
 
-## In this project, you are tasked to implement a web solution based on MERN stack in AWS Cloud.
+### In this project, you are tasked to implement a web solution based on MERN stack in AWS Cloud.
 
 ## MERN Web stack consists of following components:
 - MongoDB: A document-based, No-SQL database used to store application data in a form of documents.
@@ -37,7 +37,7 @@ database if required, and returns the data to the frontend of the application, w
 In order to complete this project you will need an AWS account and a virtual server with Ubuntu Server OS.
 
 If you do not have an AWS account – go back to Project 1 Step 0 to sign in to AWS free tier account and create a new EC2 Instance 
-of t2.nano family with **Ubuntu Server 20.04 LTS (HVM) image**. Remember, you can have multiple EC2 instances, but make sure you **STOP** the ones you are not working with at the moment to save available free hours.
+of t2.micro (free tier) family with **Ubuntu Server 20.04 LTS (HVM) image**. Remember, you can have multiple EC2 instances, but make sure you **STOP** the ones you are not working with at the moment to save available free hours.
 
 Hint #1: When you create your EC2 Instances, you can add Tag "Name" to it with a value that corresponds to a current project you 
 are working on – it will be reflected in the name of the EC2 Instance. Like this: E03-MERN
@@ -124,5 +124,60 @@ Run the command ls to confirm that you have package.json file created.
 
 Next, we will Install ExpressJs and create the Routes directory.
 
+# INSTALL EXPRESSJS
 
+Remember that Express is a framework for Node.js, therefore a lot of things developers would have programmed is already taken 
+care of out of the box. Therefore it simplifies development, and abstracts a lot of low level details. For example, Express helps
+to define routes of your application based on HTTP methods and URLs.
+
+To use express, install it using npm:
+
+```
+npm install express
+```
+
+Now create a file index.js with the command below
+
+```
+touch index.js
+```
+Run ls to confirm that your index.js file is successfully created
+
+Install the dotenv module
+
+```
+npm install dotenv
+```
+
+Open the index.js file with the command below
+**To open text archives you can use different text editor as vi, vim or nano**
+I prefer use nano, because is easier to learn the commands
+
+```
+nano index.js
+```
+Type the code below into it and save. Do not get overwhelmed by the code you see. For now, simply paste the code into the file.
+
+```
+const express = require('express');
+require('dotenv').config();
+
+const app = express();
+
+const port = process.env.PORT || 5000;
+
+app.use((req, res, next) => {
+res.header("Access-Control-Allow-Origin", "\*");
+res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+next();
+});
+
+app.use((req, res, next) => {
+res.send('Welcome to Express');
+});
+
+app.listen(port, () => {
+console.log(`Server running on port ${port}`)
+});
+```
 
