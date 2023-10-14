@@ -49,7 +49,7 @@ Hint #1 (for Windows users only): In previous projects we used Mobaxterm to conn
 ![Mobaxterm](https://github.com/santiagosaes/DevOps-Project/blob/main/3%20-%20MERN%20project/images/mobaxterm.png)
 
 
-# STEP 1 – BACKEND CONFIGURATION
+## BACKEND CONFIGURATION
 Update ubuntu
 ```
 sudo apt update
@@ -124,7 +124,7 @@ Run the command ls to confirm that you have package.json file created.
 
 Next, we will Install ExpressJs and create the Routes directory.
 
-# INSTALL EXPRESSJS
+## INSTALL EXPRESSJS
 
 Remember that Express is a framework for Node.js, therefore a lot of things developers would have programmed is already taken 
 care of out of the box. Therefore it simplifies development, and abstracts a lot of low level details. For example, Express helps
@@ -267,7 +267,6 @@ router.delete('/todos/:id', (req, res, next) => {
 module.exports = router;
 ```
 
-
 ## Models
 
 Now comes the interesting part, since the app is going to make use of Mongodb which is a NoSQL database, we need to create a model.
@@ -290,7 +289,6 @@ mkdir models
 ```
 
 Change directory into the newly created ‘models’ folder with
-
 
 ```
 cd models
@@ -385,43 +383,33 @@ In the image below, make sure you change the time of deleting the entry from 6 H
 
 Create a MongoDB database and collection inside mLab
 
-
 ![createDB](https://github.com/santiagosaes/DevOps-Project/blob/main/3%20-%20MERN%20project/images/CREATEDATAB.png)
-
 
 In the index.js file, we specified process.env to access environment variables, but we have not yet created this file. So we need 
 to do that now.
 
 Create a file in your Todo directory and name it .env.
-
 ```
 touch .env
 nano .env
 ```
-
 Add the connection string to access the database in it, just as below:
-
 ```
 DB = 'mongodb+srv://<username>:<password>@<network-address>/<dbname>?retryWrites=true&w=majority'
 ```
-
 Ensure to update <username>, <password>, <network-address> and <database> according to your setup
-
 Here is how to get your connection string
-  
-![5006](https://user-images.githubusercontent.com/85270361/210131129-c22696a1-76bb-41cf-a6cf-5028c7ab6845.PNG)
+ 
+![connectDB](https://github.com/santiagosaes/DevOps-Project/blob/main/3%20-%20MERN%20project/images/DBCONNECT.png)
 
   
-![50007](https://user-images.githubusercontent.com/85270361/210131217-788a794c-8e51-49fa-8a00-35e7b8982e16.PNG)
-
-  
- Now we need to update the index.js to reflect the use of .env so that Node.js can connect to the database.
+Now we need to update the index.js to reflect the use of .env so that Node.js can connect to the database.
 
 Simply delete existing content in the file, and update it with the entire code below.
 
 To do that using vim, follow below steps
 
-1. Open the file with vim index.js
+1. Open the file with vim index.js (you can use nano text editor)
 2. Press esc
 3. Type :
 4. Type %d
@@ -481,9 +469,9 @@ Start your server using the command:
 ```
 node index.js
 ```
-  
- 
 You shall see a message ‘Database connected successfully’, if so – we have our backend configured. Now we are going to test it.
+![DBcSu](https://github.com/santiagosaes/DevOps-Project/blob/main/3%20-%20MERN%20project/images/databaseconnect.png)
+
 
 Testing Backend Code without Frontend using RESTful API
 So far we have written backend part of our To-Do application, and configured a database, but we do not have a frontend UI yet. We 
@@ -503,21 +491,12 @@ to our To-Do list so the application could store it in the database.
 
 Note: make sure your set header key Content-Type as application/json
  
- 
-![5008](https://user-images.githubusercontent.com/85270361/210131561-9316f8f5-2112-4f09-846a-544677328817.PNG)
-
-Check the image below:
-  
-  
-![5009](https://user-images.githubusercontent.com/85270361/210131585-627646c4-a59e-48c3-8edd-0354e4ac2431.PNG)
-
+![postman](https://github.com/santiagosaes/DevOps-Project/blob/main/3%20-%20MERN%20project/images/POSTMAN1.png)
 
 Create a GET request to your API on http://<PublicIP-or-PublicDNS>:5000/api/todos. This request retrieves all existing records from
 out To-do application (backend requests these records from the database and sends it us back as a response to GET request).
   
-  
-![5010](https://user-images.githubusercontent.com/85270361/210131610-9c7c4544-1e2b-40f3-b2b6-bcd389857b0d.PNG)
-
+![postJSON](https://github.com/santiagosaes/DevOps-Project/blob/main/3%20-%20MERN%20project/images/postjson.png)  
   
 Optional task: Try to figure out how to send a DELETE request to delete a task from out To-Do list.
 
@@ -531,3 +510,488 @@ By now you have tested backend part of our To-Do application and have made sure 
   
   
 We have successfully created our Backend, now let go create the Frontend.
+
+## FRONTEND CREATION
+
+Since we are done with the functionality we want from our backend and API, it is time to create a user interface for a Web client
+(browser) to interact with the application via API. To start out with the frontend of the To-do app, we will use the create-react-app
+command to scaffold our app.
+
+In the same root directory as your backend code, which is the Todo directory, run:
+
+```
+npx create-react-app client
+```
+**If you have problems creating the client, use the following commands**
+Delete the folder
+```
+rm -r client
+```
+Now you have to purge the cache memory. Sometimes has some errors
+
+```
+npm cache clean --force
+```
+![npm](https://github.com/santiagosaes/DevOps-Project/blob/main/3%20-%20MERN%20project/images/INSTALLNPM.png) 
+
+
+This will create a new folder in your Todo directory called client, where you will add all the react code.
+
+Running a React App
+Before testing the react app, there are some dependencies that need to be installed.
+
+1. Install concurrently. It is used to run more than one command simultaneously from the same terminal window.
+
+```
+npm install concurrently --save-dev
+```
+
+2. Install nodemon. It is used to run and monitor the server. If there is any change in the server code, nodemon will restart it 
+automatically and load the new changes.
+
+
+```
+npm install nodemon --save-dev
+```
+
+3. In Todo folder open the package.json file. Change the highlighted part of the below screenshot and replace with the code below.
+
+```
+"scripts": {
+"start": "node index.js",
+"start-watch": "nodemon index.js",
+"dev": "concurrently \"npm run start-watch\" \"cd client && npm start\""
+},
+```
+![p](https://github.com/santiagosaes/DevOps-Project/blob/main/3%20-%20MERN%20project/images/package.png) 
+
+Configure Proxy in package.json
+1. Change directory to ‘client’
+
+```
+cd client
+```
+
+2. Open the package.json file
+
+```
+vi package.json
+```
+
+3. Add the key value pair in the package.json file "proxy": "http://localhost:5000".
+The whole purpose of adding the proxy configuration in number 3 above is to make it possible to access the application directly 
+from the browser by simply calling the server url like http://localhost:5000 rather than always including the entire path like
+http://localhost:5000/api/todos
+
+Now, ensure you are inside the Todo directory, and simply do:
+
+```
+npm run dev
+```
+
+Your app should open and start running on localhost:3000
+
+Important note: In order to be able to access the application from the Internet you have to open TCP port 3000 on EC2 by adding a 
+new Security Group rule. You already know how to do it.
+
+Creating your React Components
+One of the advantages of react is that it makes use of components, which are reusable and also makes code modular. For our Todo app, 
+there will be two stateful components and one stateless component.
+From your Todo directory run
+
+
+```
+cd client
+```
+
+move to the src directory
+
+```
+cd src
+```
+
+Inside your src folder create another folder called components
+
+```
+mkdir components
+```
+
+Move into the components directory with
+
+```
+cd components
+```
+
+Inside ‘components’ directory create three files Input.js, ListTodo.js and Todo.js.
+
+```
+touch Input.js ListTodo.js Todo.js
+```
+
+Open Input.js file
+
+```
+nano Input.js
+```
+
+Copy and paste the following code
+
+```
+import React, { Component } from 'react';
+import axios from 'axios';
+
+class Input extends Component {
+
+state = {
+action: ""
+}
+
+addTodo = () => {
+const task = {action: this.state.action}
+
+    if(task.action && task.action.length > 0){
+      axios.post('/api/todos', task)
+        .then(res => {
+          if(res.data){
+            this.props.getTodos();
+            this.setState({action: ""})
+          }
+        })
+        .catch(err => console.log(err))
+    }else {
+      console.log('input field required')
+    }
+
+}
+
+handleChange = (e) => {
+this.setState({
+action: e.target.value
+})
+}
+
+render() {
+let { action } = this.state;
+return (
+<div>
+<input type="text" onChange={this.handleChange} value={action} />
+<button onClick={this.addTodo}>add todo</button>
+</div>
+)
+}
+}
+
+export default Input
+```
+
+To make use of Axios, which is a Promise based HTTP client for the browser and node.js, you need to cd into your client from your
+terminal and run yarn add axios or npm install axios.
+
+Move to the **src** folder
+
+```
+cd ..
+```
+Move to clients folder
+
+```
+cd ..
+```
+
+Install Axios
+
+```
+npm install axios
+```
+Go to ‘components’ directory
+
+```
+cd src/components
+```
+
+After that open your ListTodo.js
+
+```
+vi ListTodo.js
+```
+
+in the ListTodo.js copy and paste the following code
+
+```
+import React from 'react';
+
+const ListTodo = ({ todos, deleteTodo }) => {
+
+return (
+<ul>
+{
+todos &&
+todos.length > 0 ?
+(
+todos.map(todo => {
+return (
+<li key={todo._id} onClick={() => deleteTodo(todo._id)}>{todo.action}</li>
+)
+})
+)
+:
+(
+<li>No todo(s) left</li>
+)
+}
+</ul>
+)
+}
+
+export default ListTodo
+```
+
+
+Then in your Todo.js file you write the following code
+
+```
+import React, {Component} from 'react';
+import axios from 'axios';
+
+import Input from './Input';
+import ListTodo from './ListTodo';
+
+class Todo extends Component {
+
+state = {
+todos: []
+}
+
+componentDidMount(){
+this.getTodos();
+}
+
+getTodos = () => {
+axios.get('/api/todos')
+.then(res => {
+if(res.data){
+this.setState({
+todos: res.data
+})
+}
+})
+.catch(err => console.log(err))
+}
+
+deleteTodo = (id) => {
+
+    axios.delete(`/api/todos/${id}`)
+      .then(res => {
+        if(res.data){
+          this.getTodos()
+        }
+      })
+      .catch(err => console.log(err))
+
+}
+
+render() {
+let { todos } = this.state;
+
+    return(
+      <div>
+        <h1>My Todo(s)</h1>
+        <Input getTodos={this.getTodos}/>
+        <ListTodo todos={todos} deleteTodo={this.deleteTodo}/>
+      </div>
+    )
+
+}
+}
+
+export default Todo;
+```
+
+
+We need to make little adjustment to our react code. Delete the logo and adjust our App.js to look like this.
+
+Move to the src folder
+
+
+```
+cd ..
+```
+
+Make sure that you are in the src folder and run
+
+```
+vi App.js
+```
+
+Copy and paste the code below into it
+
+
+```
+import React from 'react';
+
+import Todo from './components/Todo';
+import './App.css';
+
+const App = () => {
+return (
+<div className="App">
+<Todo />
+</div>
+);
+}
+
+export default App;
+```
+
+After pasting, exit the editor.
+
+In the src directory open the App.css
+```
+vi App.css
+```
+
+Then paste the following code into App.css:
+
+
+```
+.App {
+text-align: center;
+font-size: calc(10px + 2vmin);
+width: 60%;
+margin-left: auto;
+margin-right: auto;
+}
+
+input {
+height: 40px;
+width: 50%;
+border: none;
+border-bottom: 2px #101113 solid;
+background: none;
+font-size: 1.5rem;
+color: #787a80;
+}
+
+input:focus {
+outline: none;
+}
+
+button {
+width: 25%;
+height: 45px;
+border: none;
+margin-left: 10px;
+font-size: 25px;
+background: #101113;
+border-radius: 5px;
+color: #787a80;
+cursor: pointer;
+}
+
+button:focus {
+outline: none;
+}
+
+ul {
+list-style: none;
+text-align: left;
+padding: 15px;
+background: #171a1f;
+border-radius: 5px;
+}
+
+li {
+padding: 15px;
+font-size: 1.5rem;
+margin-bottom: 15px;
+background: #282c34;
+border-radius: 5px;
+overflow-wrap: break-word;
+cursor: pointer;
+}
+
+@media only screen and (min-width: 300px) {
+.App {
+width: 80%;
+}
+
+input {
+width: 100%
+}
+
+button {
+width: 100%;
+margin-top: 15px;
+margin-left: 0;
+}
+}
+
+@media only screen and (min-width: 640px) {
+.App {
+width: 60%;
+}
+
+input {
+width: 50%;
+}
+
+button {
+width: 30%;
+margin-left: 10px;
+margin-top: 0;
+}
+}
+```
+Exit
+
+In the src directory open the index.css
+
+```
+vim index.css
+```
+
+Copy and paste the code below:
+
+```
+body {
+margin: 0;
+padding: 0;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+box-sizing: border-box;
+background-color: #282c34;
+color: #787a80;
+}
+
+code {
+font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+monospace;
+}
+```
+
+
+Go to the Todo directory
+
+```
+cd ../..
+```
+
+When you are in the Todo directory run:
+
+```
+npm run dev
+```
+
+Assuming no errors when saving all these files, our To-Do app should be ready and fully functional with the functionality discussed
+earlier: creating a task, deleting a task and viewing all your tasks.
+
+
+![app](https://github.com/santiagosaes/DevOps-Project/blob/main/3%20-%20MERN%20project/images/REACTAPP.png) 
+
+Congratulations
+In this Project #3 you have created a simple To-Do and deployed it to MERN stack. You wrote a frontend application using React.js
+that communicates with a backend application written using Expressjs. You also created a Mongodb backend for storing tasks in a
+database.
