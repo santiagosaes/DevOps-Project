@@ -115,7 +115,7 @@ Let us move on and configure our EC2 machine to serve a Web server!
 
 First let’s understand what is a LAMP stack? (Linux, Apache, MySQL and PHP). So, we use Linux as an operating system, Apache server, MySQL Database and PHP as a Programming language for our application.
 
-![lamp stack](https://github.com/santiagosaes/DevOps-Project/blob/main/1%20-%20LAMP%20project/imagenes/lamp.png)
+![lamp stack](https://github.com/santiagosaes/DevOps-Project/blob/main/1%20-%20LAMP%20project/Imagenes/LAMP.jpg)
 
 
 ## INSTALLING APACHE AND UPDATING THE FIREWALL
@@ -198,7 +198,7 @@ The URL in browser shall also work if you do not specify port number since all w
 If you see following page, then your web server is now correctly installed and accessible through your firewall.
 
 Apache Ubuntu Default Page
-![apache](https://github.com/santiagosaes/DevOps-Project/blob/main/1%20-%20LAMP%20project/imagenes/Apache%20page.png)
+![apache](https://github.com/santiagosaes/DevOps-Project/blob/main/1%20-%20LAMP%20project/Imagenes/Apache%20page.jpg)
 
 In fact, it is the same content that you previously got by ‘curl’ command, but represented in nice HTML formatting by your web browser.
 
@@ -564,7 +564,7 @@ phpinfo();
 
 When you are finished, save and close the file, refresh the page and you will see a page similar to this:
 
-![php](https://github.com/santiagosaes/DevOps-Project/blob/main/1%20-%20LAMP%20project/imagenes/PHPinfo.png)
+![php](https://github.com/santiagosaes/DevOps-Project/blob/main/1%20-%20LAMP%20project/Imagenes/PHPinfo.png)
 
 This page provides information about your server from the perspective of PHP. It is useful for debugging and to ensure that your
 settings are being applied correctly.
