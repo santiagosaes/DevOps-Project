@@ -59,8 +59,6 @@ access web pages in the Internet.
 As we know, we have TCP port 22 open by default on our EC2 machine to access it via SSH, so we need to add a rule to EC2 
 configuration to open inbound connection through port 80:
 
-
-
 Our server is running and we can access it locally and from the Internet (Source 0.0.0.0/0 means ‘from any IP address’).
 
 First, let us try to check how we can access it locally in our Ubuntu shell, run:
@@ -81,7 +79,6 @@ As an output you can see some strangely formatted test, do not worry, we just ma
 
 Now it is time for us to test how our Nginx server can respond to requests from the Internet.
 Open a web browser of your choice and try to access following url
-
 
 ```
 http://<Public-IP-Address>:80
@@ -453,7 +450,7 @@ sudo rm /var/www/your_domain/info.php
 
 You can always regenerate this file if you need it later.
 
-# STEP 6 – RETRIEVING DATA FROM MYSQL DATABASE WITH PHP (CONTINUED)
+## RETRIEVING DATA FROM MYSQL DATABASE WITH PHP (CONTINUED)
 
 In this step you will create a test database (DB) with simple "To do list" and configure access to it, so the Nginx website would be
 able to query data from the DB and display it.
