@@ -505,7 +505,7 @@ credentials:
 
 ```
 mysql -u example_user -p
-```´´´`'`
+```
 
 Notice the -p flag in this command, which will prompt you for the password used when creating the example_user user. After logging
 in to the MySQL console, confirm that you have access to the example_database database:
@@ -618,7 +618,7 @@ http://<Public_domain_or_IP>/todo_list.php
 
 You should see a page like this, showing the content you’ve inserted in your test table:
 
-![SQL](https://github.com/santiagosaes/DevOps-Project/blob/main/2%20-%20LEMP%20project/imagenes/SQL%20PHP.png) 
+![SQL2](https://github.com/santiagosaes/DevOps-Project/blob/main/2%20-%20LEMP%20project/imagenes/SQL%20PHP.png) 
 
 That means your PHP environment is ready to connect and interact with your MySQL server.
 
