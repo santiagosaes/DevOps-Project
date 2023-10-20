@@ -388,7 +388,11 @@ sudo mysql -h <DB-Server-Private-IP-address> -u admin -p
 ![mysql](https://github.com/santiagosaes/DevOps-Project/blob/main/6%20-%20WebSolutionWordpress/images/remotemysql.png)
 
 3. Change permissions and configuration so Apache could use WordPress:
-
+```
+sudo chown -R apache:apache /var/www/html/wordpress
+sudo chcon -t httpd_sys_rw_content_t /var/www/html/wordpress -R
+sudo setsebool -P httpd_can_network_connect=1
+```
 
 
 4. Enable TCP port 80 in Inbound Rules configuration for your Web Server EC2 (enable from everywhere 0.0.0.0/0 or from your 
