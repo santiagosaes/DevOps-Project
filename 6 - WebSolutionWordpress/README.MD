@@ -275,7 +275,7 @@ sudo systemctl daemon-reload
 ![5032](https://user-images.githubusercontent.com/85270361/210138253-28ab8647-88be-4b59-9bad-c981014cdc4b.PNG)
 
 
-Step 2 — Prepare the Database Server
+## Step 2 — Prepare the Database Server
 Launch a second RedHat EC2 instance that will have a role – ‘DB Server’
 Repeat the same steps as for the Web Server, but instead of apps-lv create db-lv and mount it to /db directory instead of
 /var/www/html/.
