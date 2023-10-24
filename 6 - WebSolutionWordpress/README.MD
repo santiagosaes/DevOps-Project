@@ -389,9 +389,10 @@ sudo mysql -h <DB-Server-Private-IP-address> -u admin -p
 
 3. Change permissions and configuration so Apache could use WordPress:
 ```
-sudo chown -R apache:apache /var/www/html/wordpress
-sudo chcon -t httpd_sys_rw_content_t /var/www/html/wordpress -R
+sudo chown -R apache:apache /var/www/html/
+sudo chcon -t httpd_sys_rw_content_t /var/www/html/ -R
 sudo setsebool -P httpd_can_network_connect=1
+sudo setsebool -P httpd_can_network_connect_db 1
 ```
 
 
