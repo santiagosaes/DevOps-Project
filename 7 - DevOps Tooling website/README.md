@@ -209,7 +209,6 @@ check if the same file is accessible from other Web Servers.
 
 9. Deploy the tooling website’s code to the Webserver. Ensure that the html folder from the repository is deployed to /var/www/html
 
-
 Note 1: Do not forget to open TCP port 80 on the Web Server.
 
 Note 2: If you encounter 403 Error – check permissions to your /var/www/html folder and also disable SELinux sudo setenforce 0
@@ -221,26 +220,24 @@ To make this change permanent – open following config file sudo vi /etc/syscon
 to your database using this command mysql -h <database-private-ip> -u <db-username> -p <db-pasword> < tooling-db.sql
 Install mysql
 
-12. look inside the archive **sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf** and change **BIND ADDRESS** for 0.0.0.0
+11. look inside the archive **sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf** and change **BIND ADDRESS** for 0.0.0.0
 Restart mysql service
 ```
-sudo systemctl restart mysq
+sudo systemctl restart mysql
 ```
 
-11. Create in MySQL a new admin user with username: myuser and password: password:
+12. Create in MySQL a new admin user with username: myuser and password: password:
 
 INSERT INTO ‘users’ (‘id’, ‘username’, ‘password’, ’email’, ‘user_type’, ‘status’) VALUES
 -> (1, ‘myuser’, ‘5f4dcc3b5aa765d61d8327deb882cf99’, ‘user@mail.com’, ‘admin’, ‘1’);
 
-13. 
-
-12. Open the website in your browser http://<Web-Server-Public-IP-Address-or-Public-DNS-Name>/index.php and make sure you can login 
+13. Open the website in your browser http://<Web-Server-Public-IP-Address-or-Public-DNS-Name>/index.php and make sure you can login 
 into the websute with myuser user.
   
 
 ![webpage](https://github.com/santiagosaes/DevOps-Project/blob/main/7%20-%20DevOps%20Tooling%20website/images/webpage.png)
 
-
+**NOTE:** If you want to use the Project 7 to use de Ubuntu Load balancer, you must turn ON the NFS Server , Database server and last de webserver. This is necessary because the web server takes the configuration from the NFS server and database server.
   
 Congratulations!
 You have just implemented a web solution for a DevOps team using LAMP stack with remote Database and NFS servers
